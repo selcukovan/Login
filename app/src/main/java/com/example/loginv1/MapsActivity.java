@@ -93,10 +93,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                         if (task.isSuccessful()) {
                             for (final QueryDocumentSnapshot document : task.getResult()) {
+                                if(document.getData().get("price").toString().equals("10")){
                                 mMap.addMarker(new MarkerOptions().position(new LatLng(Double.parseDouble(document.getData().get("x")
                                         .toString()), Double.parseDouble(document.getData().get("y")
                                         .toString()))).title(document.getData().get("name").toString())
-                                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.bjk)));
+                                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.bjk)));}
+                                else{
+                                    mMap.addMarker(new MarkerOptions().position(new LatLng(Double.parseDouble(document.getData().get("x")
+                                            .toString()), Double.parseDouble(document.getData().get("y")
+                                            .toString()))).title(document.getData().get("name").toString())
+                                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.fsh)));}
+
 
 
 
